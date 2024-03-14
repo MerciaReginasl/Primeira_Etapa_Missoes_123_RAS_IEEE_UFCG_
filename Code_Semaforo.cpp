@@ -34,6 +34,6 @@ void loop(){
   digitalWrite(verde, HIGH);
   digitalWrite(vermelho, LOW);
   
-  delay(5000); //Tempo de espera 2 Segundos (5 s). 
+  delay(5000); //Tempo de espera 5 Segundos (5 s). 
   
 }
