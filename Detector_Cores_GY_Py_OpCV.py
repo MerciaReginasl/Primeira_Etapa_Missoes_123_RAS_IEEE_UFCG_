@@ -1,21 +1,35 @@
-import cv2
-import argparse
-from operator import xor
+#Programa com Python e OpenCV que identifica e mostra cores em imagens e vídeos.
 
+#Ao rodar, o programa abre a webcam e consegue identificar as cores verde e amarelo, pois são as únicas máscaras que estão configuradas até o momento.
+
+#Importando as bibliotecas
+
+import cv2
+import argparse  # O módulo para fazer a Análise de Linha de Comando 
+from operator import xor # Operação XOR bit a bit 
+
+# As função def - irá agrupar um conjunto de instruções em um bloco, permitindo que esse bloco seja executado quantas vezes forem necessárias.
 
 def callback(value):
     pass
+
+# Função setup_trackbar(), o primeiro argumento é o nome do trackbar, o segundo é o nome da janela à qual está anexado, 
+# o terceiro argumento é o valor padrão, o quarto é o valor máximo e o quinto é a função de retorno de chamada que é executada 
+# toda vez que o trackbar alterações de valor.
+
 
 
 def setup_trackbars(range_filter):
     cv2.namedWindow("Trackbars", 0)
 
-    for i in ["MIN", "MAX"]:
+    for i in ["MIN", "MAX"]:  //loop para os valores máximos e mínimos 
         v = 0 if i == "MIN" else 255
 
         for j in range_filter:
             cv2.createTrackbar("%s_%s" % (j, i), "Trackbars", v, 255, callback)
 
+# A função que chama os argumentos 
+# Analisador sintático para opções de linha de comando, argumentos e subcomandos
 
 def get_arguments():
     ap = argparse.ArgumentParser()
@@ -49,6 +63,7 @@ def get_trackbar_values(range_filter):
 
     return values
 
+# O ponto de entrada padrão do programa
 
 def main():
     args = get_arguments()
